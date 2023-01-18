@@ -39,8 +39,8 @@ public class TextFileReadReport {
     /**
      * main() accepts a single commmand line parameter.
      *
-     * @param arg[0] path to the input text file.
-     * @param arg[1] is the number of characters the user desires to be analyzed
+     * @param args[0] path to the input text file.
+     * @param args[1] is the number of characters the user desires to be analyzed
      */
     public static void main(String[] args) {
         if (args.length != 2) {
@@ -125,7 +125,8 @@ public class TextFileReadReport {
      * checkFileLength() checks the file length with a given index with a given
      * string
      *
-     * @param possbileLength
+     * @param lines string of the File the user wants to analyze
+     * @param possibleLength int of the number of characters the user wants to analyze
      */
     private static Boolean userFileLengthValid(String lines, int possibleLength) {
         System.out.println(lines.length());
