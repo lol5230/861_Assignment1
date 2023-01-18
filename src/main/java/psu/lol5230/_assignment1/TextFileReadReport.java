@@ -16,31 +16,32 @@ import java.io.StringReader;
  */
 public class TextFileReadReport {
 
-    private String fileSubstring;
+    private String[] fileLines;
 
     /**
-     * Get the value of fileSubstring
+     * Get the value of fileLines
      *
-     * @return the value of fileSubstring
+     * @return the value of fileLines
      */
-    public String getFileSubstring() {
-        return fileSubstring;
+    public String[] getFileLines() {
+        return fileLines;
     }
 
     /**
-     * Set the value of fileSubstring
+     * Set the value of fileLines
      *
-     * @param fileSubstring new value of fileSubstring
+     * @param fileLines new value of fileLines
      */
-    public void setFileSubstring(String fileSubstring) {
-        this.fileSubstring = fileSubstring;
+    public void setFileLines(String fileLines) {
+
     }
 
     /**
      * main() accepts a single commmand line parameter.
      *
      * @param args[0] path to the input text file.
-     * @param args[1] is the number of characters the user desires to be analyzed
+     * @param args[1] is the number of characters the user desires to be
+     * analyzed
      */
     public static void main(String[] args) {
         if (args.length != 2) {
@@ -60,15 +61,18 @@ public class TextFileReadReport {
         } catch (NumberFormatException nfe) {
             System.out.println("Make sure to only input whole numbers for the second argument");
             System.exit(1);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Something unexpected happened, try again");
             System.exit(1);
         }
-       
+
+        String[] fileLines = getFileLines(lines);
+        
+        String numberOfWords = "The numbers of word in this file: " + numberOfWords(fileLines);
+        System.out.println(numberOfWords);
 
 // Write file from string to text file
-        printTextFile(lines);
+        //printTextFile(lines);
     }
 
     /**
@@ -126,10 +130,31 @@ public class TextFileReadReport {
      * string
      *
      * @param lines string of the File the user wants to analyze
-     * @param possibleLength int of the number of characters the user wants to analyze
+     * @param possibleLength int of the number of characters the user wants to
+     * analyze
      */
     private static Boolean userFileLengthValid(String lines, int possibleLength) {
         System.out.println(lines.length());
         return lines.length() >= possibleLength;
+    }
+
+    private static int numberOfWords(String[] fileLines) {
+        int numberOfWords = 0;
+        for (int i = 0; i < fileLines.length; i++) {
+            
+            String[] words = fileLines[i].trim().split(" ");
+            for (String word : words) {
+                //!word.contains(" ") && 
+                if (word.matches("[a-zA-Z.?!,;'\"]+")) 
+                {
+                    numberOfWords++;
+                }
+            }
+        }
+        return numberOfWords;
+    }
+
+    private static String[] getFileLines(String fileString) {
+        return fileString.split("\n");
     }
 }
