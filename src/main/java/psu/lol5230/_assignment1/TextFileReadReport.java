@@ -16,21 +16,57 @@ import java.io.StringReader;
  */
 public class TextFileReadReport {
 
-    
+    private String fileSubstring;
+
+    /**
+     * Get the value of fileSubstring
+     *
+     * @return the value of fileSubstring
+     */
+    public String getFileSubstring() {
+        return fileSubstring;
+    }
+
+    /**
+     * Set the value of fileSubstring
+     *
+     * @param fileSubstring new value of fileSubstring
+     */
+    public void setFileSubstring(String fileSubstring) {
+        this.fileSubstring = fileSubstring;
+    }
+
     /**
      * main() accepts a single commmand line parameter.
      *
      * @param arg[0] path to the input text file.
+     * @param arg[1] is the number of characters the user desires to be analyzed
      */
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.out.println("Missing command line argument");
+            System.out.println("Missing at least one command line argument");
             System.out.println("Usage java TextFileReadReport filename numberOfCharToRead");
             System.exit(1);
         }
         String lines;
-// Read text file into a String
+        // Read text file into a String
         lines = readTextFile(args[0]);
+        //Check that the user input for read to index is valid
+        try {
+            if (!userFileLengthValid(lines, Integer.valueOf(args[1]))) {
+                System.out.println("Invalid number of characters to review, try a smaller number");
+                System.exit(1);
+            }
+        } catch (NumberFormatException nfe) {
+            System.out.println("Make sure to only input whole numbers for the second argument");
+            System.exit(1);
+        } catch (Exception e)
+        {
+            System.out.println("Something unexpected happened, try again");
+            System.exit(1);
+        }
+       
+
 // Write file from string to text file
         printTextFile(lines);
     }
@@ -84,12 +120,15 @@ public class TextFileReadReport {
             System.exit(4);
         }
     }
-    
+
     /**
-     * checkFileLength() checks the file length with a given index with a given string
-     * @param possbileLength 
+     * checkFileLength() checks the file length with a given index with a given
+     * string
+     *
+     * @param possbileLength
      */
-    private static void checkFileLength(int possbileLength, String lines) {
-        
+    private static Boolean userFileLengthValid(String lines, int possibleLength) {
+        System.out.println(lines.length());
+        return lines.length() >= possibleLength;
     }
 }

@@ -12,7 +12,7 @@
             <properties>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.appArgs>text_file.txt</exec.appArgs>
+                <exec.appArgs>gettysburg.txt 1479</exec.appArgs>
                 <exec.mainClass>psu.lol5230._assignment1.TextFileReadReport</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <exec.workingdir>C:\Users\luke.leiter\Documents\Programming\SE_Masters\861_Assignment1</exec.workingdir>
@@ -30,7 +30,7 @@
             <properties>
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.appArgs>text_file.txt</exec.appArgs>
+                <exec.appArgs>gettysburg.txt 1479</exec.appArgs>
                 <exec.mainClass>psu.lol5230._assignment1.TextFileReadReport</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
@@ -51,7 +51,7 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.mainClass>psu.lol5230._assignment1.TextFileReadReport</exec.mainClass>
                 <exec.executable>java</exec.executable>
-                <exec.appArgs>text_file.txt</exec.appArgs>
+                <exec.appArgs>gettysburg.txt 1479</exec.appArgs>
                 <exec.workingdir>C:\Users\luke.leiter\Documents\Programming\SE_Masters\861_Assignment1</exec.workingdir>
             </properties>
         </action>
