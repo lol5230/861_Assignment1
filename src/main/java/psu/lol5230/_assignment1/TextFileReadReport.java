@@ -81,10 +81,18 @@ public class TextFileReadReport {
         String numberOfSpaces = "The number of spaces in this file: "
                 + getNumberOfSpaces(lines);
         System.out.println(numberOfSpaces);
-        
+
         String numberOfPunctuation = "The number of punctuation in this file: "
                 + getNumberOfPunctuation(lines);
         System.out.println(numberOfPunctuation);
+
+        String numberOfUpperCase = "The number of uppercase in this file: "
+                + getNumberOfUpperCase(lines);
+        System.out.println(numberOfUpperCase);
+
+        String numberOfLowerCase = "The number of uppercase in this file: "
+                + getNumberOfLowerCase(lines);
+        System.out.println(numberOfLowerCase);
 
 // Write file from string to text file
         //printTextFile(lines);
@@ -234,16 +242,61 @@ public class TextFileReadReport {
         return numberOfSpaces;
     }
 
+    /**
+     * getNumberOfPunctuation returns the number of punctuation present in the a
+     * given string
+     *
+     * @param string a String
+     * @return an integer
+     */
     private static int getNumberOfPunctuation(String string) {
         int numberOfPunctuation = 0;
         for (int i = 0; i < string.length(); i++) {
             char c = string.charAt(i);
-            if (c == '.' || c == '?' || c == '!' || c == ',' || c == ';' || 
-                    c == '\'' || c == '-') {
+            if (c == '.' || c == '?' || c == '!' || c == ',' || c == ';'
+                    || c == '\'' || c == '-') {
                 numberOfPunctuation++;
             }
         }
 
         return numberOfPunctuation;
+    }
+
+    /**
+     * getNumberOfUpperCase returns the number of lowercase characters in a
+     * given string
+     *
+     * @param string a String
+     * @return an integer
+     */
+    private static int getNumberOfUpperCase(String string) {
+        int numberOfUpperCase = 0;
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            if (Character.isUpperCase(c)) {
+                numberOfUpperCase++;
+            }
+        }
+
+        return numberOfUpperCase;
+    }
+
+    /**
+     * getNumberOfLowerCase returns the number of lowercase characters in a
+     * given string
+     *
+     * @param string a String
+     * @return an integer
+     */
+    private static int getNumberOfLowerCase(String string) {
+        int numberOfLowerCase = 0;
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            if (Character.isLowerCase(c)) {
+                numberOfLowerCase++;
+            }
+        }
+
+        return numberOfLowerCase;
     }
 }
