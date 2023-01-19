@@ -126,7 +126,7 @@ public class TextFileReadReport {
     }
 
     /**
-     * checkFileLength() checks the file length with a given index with a given
+     * userFileLengthValid() checks the file length with a given index with a given
      * string
      *
      * @param lines string of the File the user wants to analyze
@@ -138,6 +138,13 @@ public class TextFileReadReport {
         return lines.length() >= possibleLength;
     }
 
+    /**
+     * numberOfWords() returns the number of words in all the elements of a given
+     * String array (String [])
+     * 
+     * @param fileLines a String[]
+     * @return an integer
+     */
     private static int numberOfWords(String[] fileLines) {
         int numberOfWords = 0;
         for (int i = 0; i < fileLines.length; i++) {
@@ -154,7 +161,22 @@ public class TextFileReadReport {
         return numberOfWords;
     }
 
+    /**
+     * getFileLines return a String[] of the lines of a given String, usually read
+     * from a file
+     * @param fileString a String to be separated
+     * @return a String[] of lines in fileString
+     */
     private static String[] getFileLines(String fileString) {
         return fileString.split("\n");
+    }
+    
+    private static int getNumberOfNumbers(String string)
+    {
+        int numberOfNumbers = 0;
+        
+        
+        
+        return numberOfNumbers;
     }
 }
