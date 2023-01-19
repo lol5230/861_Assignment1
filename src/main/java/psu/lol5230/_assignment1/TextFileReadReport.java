@@ -73,11 +73,16 @@ public class TextFileReadReport {
         String numberOfNumbers = "The number of numbers in this file: "
                 + getNumberOfNumbers(lines);
         System.out.println(numberOfNumbers);
-        
+
         String numberOfCharacters = "The number of characters in this file: "
                 + getNumberOfCharacters(lines);
         System.out.println(numberOfCharacters);
 
+        String numberOfSpaces = "The number of spaces in this file: "
+                + getNumberOfSpaces(lines);
+        System.out.println(numberOfSpaces);
+        
+        
 // Write file from string to text file
         //printTextFile(lines);
     }
@@ -201,10 +206,28 @@ public class TextFileReadReport {
     /**
      * getNumberOfCharacters returns the number of characters in a given string
      * not including endlines (\n)
+     *
      * @param string a string
      * @return an integer
      */
     private static int getNumberOfCharacters(String string) {
         return string.replace("\n", "").length();
+    }
+
+    /**
+     * getNumberOfSpaces returns the number of spaces present in a string
+     * 
+     * @param string a String
+     * @return an integer
+     */
+    private static int getNumberOfSpaces(String string) {
+        int numberOfSpaces = 0;
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == ' ') {
+                numberOfSpaces++;
+            }
+        }
+
+        return numberOfSpaces;
     }
 }
