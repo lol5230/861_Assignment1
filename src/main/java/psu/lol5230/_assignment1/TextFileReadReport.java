@@ -93,6 +93,9 @@ public class TextFileReadReport {
         String numberOfLowerCase = "The number of uppercase in this file: "
                 + getNumberOfLowerCase(lines);
         System.out.println(numberOfLowerCase);
+        
+        String reversedText = reverseText(lines);
+        System.out.println(reversedText);
 
 // Write file from string to text file
         //printTextFile(lines);
@@ -146,6 +149,25 @@ public class TextFileReadReport {
             System.out.println("Error reading string");
             System.exit(4);
         }
+    }
+    
+    /**
+     * reverseText takes in a string and returns a string of that text in reverse 
+     * order. The returned string will be all lowercase.
+     *
+     * @param lines a String
+     * @return a String, all lower case
+     */
+    private static String reverseText(String lines)
+    {
+        String reversedText = "";
+        
+        for (int i = lines.length()-1; i >= 0; i--)
+        {
+            reversedText += lines.charAt(i);
+        }
+        
+        return reversedText.toLowerCase();
     }
 
     /**
