@@ -65,14 +65,18 @@ public class TextFileReadReport {
             System.out.println("Something unexpected happened, try again");
             System.exit(1);
         }
-        
-        String numberOfWords = "The numbers of word in this file: " 
+
+        String numberOfWords = "The numbers of word in this file: "
                 + numberOfWords(getFileLines(lines));
         System.out.println(numberOfWords);
-        
-        String numberOfNumbers = "The number of numbers in this file: " +
-                getNumberOfNumbers(lines);
+
+        String numberOfNumbers = "The number of numbers in this file: "
+                + getNumberOfNumbers(lines);
         System.out.println(numberOfNumbers);
+        
+        String numberOfCharacters = "The number of characters in this file: "
+                + getNumberOfCharacters(lines);
+        System.out.println(numberOfCharacters);
 
 // Write file from string to text file
         //printTextFile(lines);
@@ -129,8 +133,8 @@ public class TextFileReadReport {
     }
 
     /**
-     * userFileLengthValid() checks the file length with a given index with a given
-     * string
+     * userFileLengthValid() checks the file length with a given index with a
+     * given string
      *
      * @param lines string of the File the user wants to analyze
      * @param possibleLength int of the number of characters the user wants to
@@ -142,20 +146,19 @@ public class TextFileReadReport {
     }
 
     /**
-     * numberOfWords() returns the number of words in all the elements of a given
-     * String array (String [])
-     * 
+     * numberOfWords() returns the number of words in all the elements of a
+     * given String array (String [])
+     *
      * @param fileLines a String[]
      * @return an integer
      */
     private static int numberOfWords(String[] fileLines) {
         int numberOfWords = 0;
         for (int i = 0; i < fileLines.length; i++) {
-            
+
             String[] words = fileLines[i].trim().split(" ");
             for (String word : words) {
-                if (word.matches("[a-zA-Z.?!,;'\"]+")) 
-                {
+                if (word.matches("[a-zA-Z.?!,;'\"]+")) {
                     numberOfWords++;
                 }
             }
@@ -164,36 +167,44 @@ public class TextFileReadReport {
     }
 
     /**
-     * getFileLines return a String[] of the lines of a given String, usually read
-     * from a file
+     * getFileLines return a String[] of the lines of a given String, usually
+     * read from a file
+     *
      * @param fileString a String to be separated
      * @return a String[] of lines in fileString
      */
     private static String[] getFileLines(String fileString) {
         return fileString.split("\n");
     }
-    
+
     /**
-     * getNumberOfNumbers returns and integer with the value that equals the 
+     * getNumberOfNumbers returns and integer with the value that equals the
      * numbers of numbers in the given string
-     * 
+     *
      * @param string a String
      * @return an integer
      */
-    private static int getNumberOfNumbers(String string)
-    {
+    private static int getNumberOfNumbers(String string) {
         int numberOfNumbers = 0;
-        
+
         String noNewLines = string.replace('\n', ' ');
         String[] words = string.split(" ");
-        for (String word : words)
-        {
-            if (word.matches("[0-9.?!,;'\"\n]+"))
-            {
+        for (String word : words) {
+            if (word.matches("[0-9.?!,;'\"\n]+")) {
                 numberOfNumbers++;
             }
         }
-        
+
         return numberOfNumbers;
+    }
+
+    /**
+     * getNumberOfCharacters returns the number of characters in a given string
+     * not including endlines (\n)
+     * @param string a string
+     * @return an integer
+     */
+    private static int getNumberOfCharacters(String string) {
+        return string.replace("\n", "").length();
     }
 }
