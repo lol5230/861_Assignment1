@@ -65,11 +65,14 @@ public class TextFileReadReport {
             System.out.println("Something unexpected happened, try again");
             System.exit(1);
         }
-
-        String[] fileLines = getFileLines(lines);
         
-        String numberOfWords = "The numbers of word in this file: " + numberOfWords(fileLines);
+        String numberOfWords = "The numbers of word in this file: " 
+                + numberOfWords(getFileLines(lines));
         System.out.println(numberOfWords);
+        
+        String numberOfNumbers = "The number of numbers in this file: " +
+                getNumberOfNumbers(lines);
+        System.out.println(numberOfNumbers);
 
 // Write file from string to text file
         //printTextFile(lines);
@@ -151,7 +154,6 @@ public class TextFileReadReport {
             
             String[] words = fileLines[i].trim().split(" ");
             for (String word : words) {
-                //!word.contains(" ") && 
                 if (word.matches("[a-zA-Z.?!,;'\"]+")) 
                 {
                     numberOfWords++;
@@ -171,11 +173,26 @@ public class TextFileReadReport {
         return fileString.split("\n");
     }
     
+    /**
+     * getNumberOfNumbers returns and integer with the value that equals the 
+     * numbers of numbers in the given string
+     * 
+     * @param string a String
+     * @return an integer
+     */
     private static int getNumberOfNumbers(String string)
     {
         int numberOfNumbers = 0;
         
-        
+        String noNewLines = string.replace('\n', ' ');
+        String[] words = string.split(" ");
+        for (String word : words)
+        {
+            if (word.matches("[0-9.?!,;'\"\n]+"))
+            {
+                numberOfNumbers++;
+            }
+        }
         
         return numberOfNumbers;
     }
