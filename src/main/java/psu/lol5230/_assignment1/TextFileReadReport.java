@@ -82,7 +82,10 @@ public class TextFileReadReport {
                 + getNumberOfSpaces(lines);
         System.out.println(numberOfSpaces);
         
-        
+        String numberOfPunctuation = "The number of punctuation in this file: "
+                + getNumberOfPunctuation(lines);
+        System.out.println(numberOfPunctuation);
+
 // Write file from string to text file
         //printTextFile(lines);
     }
@@ -216,7 +219,7 @@ public class TextFileReadReport {
 
     /**
      * getNumberOfSpaces returns the number of spaces present in a string
-     * 
+     *
      * @param string a String
      * @return an integer
      */
@@ -229,5 +232,18 @@ public class TextFileReadReport {
         }
 
         return numberOfSpaces;
+    }
+
+    private static int getNumberOfPunctuation(String string) {
+        int numberOfPunctuation = 0;
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            if (c == '.' || c == '?' || c == '!' || c == ',' || c == ';' || 
+                    c == '\'' || c == '-') {
+                numberOfPunctuation++;
+            }
+        }
+
+        return numberOfPunctuation;
     }
 }
